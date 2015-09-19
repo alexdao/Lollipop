@@ -8,10 +8,18 @@
     <!-- Result -->
     <string name="result_tab_title">Result</string>
 
-    <!-- About -->
+    <!-- History -->
     <string name="history_tab_title">History</string>
 
-    <!-- Overflow menu -->
+    <!-- Settings -->
     <string name="action_settings">Settings</string>
+    <string name="settings_general_title">General</string>
+    <string name="settings_images_over_wifi">Only download images over WiFi</string>
+    <string name="settings_help_title">Help</string>
+
+    <string name="settings_source_code_title">View our source code!</string>
+    <string name="settings_source_code_url">https://github.com/alexdao/Lollipop</string>
+
+    <!-- About -->
     <string name="action_about">About</string>
 </resources>
