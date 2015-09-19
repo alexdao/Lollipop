@@ -3,4 +3,16 @@
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+
+    <!-- Camera -->
+    <string name="camera_tab_title">Camera</string>
+
+    <!-- Result -->
+    <string name="result_tab_title">Result</string>
+
+    <!-- About -->
+    <string name="history_tab_title">History</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
