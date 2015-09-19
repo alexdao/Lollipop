@@ -20,7 +20,8 @@
         </activity>
         <activity
             android:name=".ui.SettingsActivity"
-            android:label="@string/action_settings" >
+            android:label="@string/action_settings"
+            android:theme="@style/AppTheme">
         </activity>
     </application>
 
