@@ -22,4 +22,5 @@
 
     <!-- About -->
     <string name="action_about">About</string>
+    <string name="about_title"></string>
 </resources>
