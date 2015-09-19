@@ -8,11 +8,9 @@
 
     <!-- Theme values -->
     <color name="colorPrimary">#18BC9C</color>
-    <color name="colorPrimaryDark">#C62828</color>
-    <color name="colorAccent">#F44336</color>
+    <color name="colorPrimaryDark">#219173</color>
+    <color name="colorAccent">#F59331</color>
 
-    <color name="loadingImages">#F55B5B</color>
-    <color name="blue">#147FD7</color>
     <color name="whiteText">#FFFFFF</color>
     <color name="blackText">#000</color>
 
