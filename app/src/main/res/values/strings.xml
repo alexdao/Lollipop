@@ -2,8 +2,6 @@
     <string name="app_name">Lollipop</string>
 
     <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
-
     <!-- Camera -->
     <string name="camera_tab_title">Camera</string>
 
@@ -13,6 +11,7 @@
     <!-- About -->
     <string name="history_tab_title">History</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!-- Overflow menu -->
+    <string name="action_settings">Settings</string>
+    <string name="action_about">About</string>
 </resources>

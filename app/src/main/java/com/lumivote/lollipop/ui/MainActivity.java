@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
     public static class TabsFragmentPagerAdapter extends FragmentPagerAdapter {
 
         final int PAGE_COUNT = 3;
-        private String tabTitles[] = new String[]{"Tab1", "Tab2", "Tab3"};
+        private String tabTitles[] = new String[3];
         private Context context;
 
         public TabsFragmentPagerAdapter(FragmentManager fm, Context context) {
