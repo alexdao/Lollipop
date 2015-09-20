@@ -21,7 +21,11 @@
         <activity
             android:name=".ui.SettingsActivity"
             android:label="@string/action_settings"
-            android:theme="@style/AppTheme">
+            android:theme="@style/AppTheme" >
+        </activity>
+        <activity
+            android:name=".ui.AboutActivity"
+            android:label="@string/action_about" >
         </activity>
     </application>
 
