@@ -29,7 +29,7 @@
     <string name="action_about">About</string>
     <string name="about_text_title">Lollipop</string>
     <string name="about_summary">\nLollipop is an Android app built at HackMIT that can diagnose common illnesses and injuries by taking pictures of the symptoms. We train the Clarifai visual recognition system to understand these medical conditions via machine learning and AI techniques by scraping Google Images.\n</string>
-    <string name="about_libraries">This app was built with the help of Clarifai, Parse, and Google Images. Special thanks to ButterKnife, Retrofit, OKHttp, Gson, Otto and jsonschema2pojo.\n</string>
+    <string name="about_libraries">This app was built with the help of Clarifai, Parse, and Bing Images. Special thanks to ButterKnife, Retrofit, OKHttp, Gson, Otto and jsonschema2pojo.\n</string>
     <string name="about_license_text">Licensed under the Apache License, Version 2.0.\n</string>
     <string name="about_credit">Built by - Alex Dao, Soojee Chung, and James Sweetman.</string>
 </resources>

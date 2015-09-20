@@ -11,6 +11,7 @@ Written by Alex Dao, Soojee Chung, and James Sweetman for HackMIT.
 Special thanks to:
 * [Clarifai](https://developer.clarifai.com/docs/)
 * [Parse](https://www.parse.com/)
+* [Bing Images](http://datamarket.azure.com/dataset/bing/search)
 * [jsonschema2pojo](http://www.jsonschema2pojo.org/)
 
 ### Libraries
