@@ -5,6 +5,7 @@
     <!-- Camera -->
     <string name="camera_tab_title">Camera</string>
     <string name="camera_take_picture">Take Picture!</string>
+    <string name="photoPaths">photo_paths</string>
 
     <!-- Result -->
     <string name="result_tab_title">Result</string>
