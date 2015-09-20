@@ -92,6 +92,12 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
             return true;
         }
+        if(id == R.id.action_clear){
+            TinyDB tinyDB = new TinyDB(this);
+            tinyDB.putList(getString(R.string.photoPaths), new ArrayList<String>());
+            tinyDB.putList(getString(R.string.photoDates), new ArrayList<String>());
+            tinyDB.putList(getString(R.string.photoTags), new ArrayList<String>());
+        }
 
         return super.onOptionsItemSelected(item);
     }
@@ -191,6 +197,10 @@ public class MainActivity extends AppCompatActivity {
         ArrayList<String> photoDates = tinyDB.getList(getString(R.string.photoDates));
         photoDates.add(formattedTime);
         tinyDB.putList(getString(R.string.photoDates), photoDates);
+
+        ArrayList<String> photoTags = tinyDB.getList(getString(R.string.photoTags));
+        photoTags.add("test disease");
+        tinyDB.putList(getString(R.string.photoTags), photoTags);
         return image;
     }
 

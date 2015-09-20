@@ -2,7 +2,29 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.lumivote.lollipop.ui.ResultFragment">
+
+    <TextView
+        android:id="@+id/illnessTitle"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/blackText"
+        android:textSize="@dimen/result_illness_title" />
+
+    <TextView
+        android:id="@+id/illnessDate"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/blackText"
+        android:textSize="@dimen/result_illness_title" />
+
+    <ImageView
+        android:id="@+id/illnessPhoto"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/history_image_height"
+        android:padding="@dimen/result_image_padding" />
+
 
 
 </LinearLayout>

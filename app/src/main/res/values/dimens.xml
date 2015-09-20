@@ -3,6 +3,10 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
 
+    <!-- Result -->
+    <dimen name="result_illness_title">20sp</dimen>
+    <dimen name="result_image_padding">8dp</dimen>
+
     <!-- History -->
     <dimen name="rv_padding">8dp</dimen>
     <dimen name="history_image_height">200dp</dimen>
