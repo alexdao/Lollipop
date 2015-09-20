@@ -2,7 +2,7 @@ Lollipop
 ==========
 
 ### About
-Lollipop is an Android app that can diagnose common illnesses and injuries by taking pictures of the symptoms. We train the Clarifai visual recognition system to understand these medical conditions via machine learning and AI techniques by scraping Google Images.
+Lollipop is an Android app built during HackMIT that can diagnose common illnesses and injuries by taking pictures of the symptoms. We train the Clarifai visual recognition system to understand these medical conditions via machine learning and AI techniques by scraping Google Images.
 
 Our backend provider is Parse.
 
