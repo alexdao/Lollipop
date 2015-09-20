@@ -24,6 +24,10 @@ import com.clarifai.api.RecognitionResult;
 import com.clarifai.api.Tag;
 import com.lumivote.lollipop.R;
 import com.lumivote.lollipop.TinyDB;
+import com.lumivote.lollipop.api.UploadRESTAdapter;
+import com.lumivote.lollipop.bus.BusProvider;
+import com.lumivote.lollipop.bus.ImageUploadEvent;
+import com.squareup.otto.Subscribe;
 
 import java.io.File;
 import java.io.IOException;
@@ -100,6 +104,27 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        BusProvider.getInstance().register(this);
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        BusProvider.getInstance().unregister(this);
+    }
+
+    @Subscribe
+    public void handleImageUploadEvent (ImageUploadEvent event) {
+        TinyDB tinyDB = new TinyDB(this);
+        String tag = event.getTag();
+        ArrayList<String> photoTags = tinyDB.getList(getString(R.string.photoTags));
+        photoTags.add(tag);
+        tinyDB.putList(getString(R.string.photoTags), photoTags);
     }
 
     public static class TabsFragmentPagerAdapter extends FragmentPagerAdapter {
@@ -189,6 +214,11 @@ public class MainActivity extends AppCompatActivity {
         );
         mCurrentImage = image;
         mCurrentPhotoPath = image.getAbsolutePath();
+
+        //posting image to server
+        UploadRESTAdapter client = UploadRESTAdapter.getInstance();
+        client.uploadImage(mCurrentPhotoPath);
+
         TinyDB tinyDB = new TinyDB(this);
         ArrayList<String> photoPaths = tinyDB.getList(getString(R.string.photoPaths));
         photoPaths.add(mCurrentPhotoPath);
@@ -198,9 +228,10 @@ public class MainActivity extends AppCompatActivity {
         photoDates.add(formattedTime);
         tinyDB.putList(getString(R.string.photoDates), photoDates);
 
+        /**
         ArrayList<String> photoTags = tinyDB.getList(getString(R.string.photoTags));
-        photoTags.add("test disease");
-        tinyDB.putList(getString(R.string.photoTags), photoTags);
+        photoTags.add("Pink eye");
+        tinyDB.putList(getString(R.string.photoTags), photoTags);*/
         return image;
     }
 
