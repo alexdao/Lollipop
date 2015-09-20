@@ -226,10 +226,14 @@ public class MainActivity extends AppCompatActivity {
         photoDates.add(formattedTime);
         tinyDB.putList(getString(R.string.photoDates), photoDates);
 
-        /**
         ArrayList<String> photoTags = tinyDB.getList(getString(R.string.photoTags));
-        photoTags.add("Pink eye");
-        tinyDB.putList(getString(R.string.photoTags), photoTags);*/
+        if(photoTags.size() > 0){
+            photoTags.add("None, you are healthy!");
+        }
+        else{
+            photoTags.add("Pink eye");
+        }
+        tinyDB.putList(getString(R.string.photoTags), photoTags);
         return image;
     }
 

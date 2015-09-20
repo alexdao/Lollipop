@@ -84,7 +84,14 @@ public class HistoryFragment extends Fragment {
         ArrayList<String> photoDates = tinyDB.getList(getActivity().getString(R.string.photoDates));
         ArrayList<String> photoTags = tinyDB.getList(getActivity().getString(R.string.photoTags));
         for(int i=0; i<photoPaths.size(); i++){
-            illnesses.add(new Illness(photoDates.get(i), "hi", photoPaths.get(i)));
+            String tag;
+            if(i == 0){
+                tag="Pink eye";
+            }
+            else{
+                tag ="None, you are healthy!";
+            }
+            illnesses.add(new Illness(photoDates.get(i), tag, photoPaths.get(i)));
         }
     }
 
