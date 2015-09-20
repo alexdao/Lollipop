@@ -4,6 +4,7 @@
     <string name="hello_world">Hello world!</string>
     <!-- Camera -->
     <string name="camera_tab_title">Camera</string>
+    <string name="camera_take_picture">Take Picture!</string>
 
     <!-- Result -->
     <string name="result_tab_title">Result</string>
