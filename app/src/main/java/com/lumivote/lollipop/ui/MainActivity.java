@@ -21,10 +21,8 @@ import android.view.View;
 import com.clarifai.api.ClarifaiClient;
 import com.clarifai.api.RecognitionRequest;
 import com.clarifai.api.RecognitionResult;
-import com.clarifai.api.Tag;
 import com.lumivote.lollipop.R;
 import com.lumivote.lollipop.TinyDB;
-import com.lumivote.lollipop.api.UploadRESTAdapter;
 import com.lumivote.lollipop.bus.BusProvider;
 import com.lumivote.lollipop.bus.ImageUploadEvent;
 import com.squareup.otto.Subscribe;
@@ -43,8 +41,8 @@ public class MainActivity extends AppCompatActivity {
 
     static final int REQUEST_IMAGE_CAPTURE = 1;
     static final int REQUEST_TAKE_PHOTO = 1;
-    static final String APP_ID = "Jnd1zR_3ZtsW9xsr0EW87IKQyIIuxeTRHbcNBAt1";
-    static final String APP_SECRET = "3ga_7Lvnfv9hWl5s4BnaSwuT_dE2DsXi6QK01e2X";
+    static final String APP_ID = "61nzmkSg9gU5NpsoU2uvwCaqsmeoxKmln7oXHg1G";
+    static final String APP_SECRET = "FnOchOzIQ0VwknzrxkJezpHp5MMsWjzeHf97W9vP";
     String mCurrentPhotoPath;
     File mCurrentImage;
 
@@ -165,10 +163,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void fetchTag(View view) {
-        ClarifaiClient clarifai = new ClarifaiClient(APP_ID, APP_SECRET);
+        ClarifaiClient clarifai = new ClarifaiClient();
         List<RecognitionResult> results =
                 clarifai.recognize(new RecognitionRequest("http://www.clarifai.com/static/img_ours/metro-north.jpg"));
-        Tag mostRelevantTag = null;
+        /**Tag mostRelevantTag = null;
         for (Tag tag : results.get(0).getTags()) {
             if (mostRelevantTag == null || mostRelevantTag.getProbability() < tag.getProbability())
                 mostRelevantTag = tag;
@@ -177,7 +175,7 @@ public class MainActivity extends AppCompatActivity {
         TinyDB tinyDB = new TinyDB(this);
         ArrayList<String> photoTags = tinyDB.getList(getString(R.string.photoTags));
         photoTags.add(mostRelevantTag.getName());
-        tinyDB.putList(getString(R.string.photoTags), photoTags);
+        tinyDB.putList(getString(R.string.photoTags), photoTags);*/
     }
 
     public void takePicture(View view) {
@@ -216,8 +214,8 @@ public class MainActivity extends AppCompatActivity {
         mCurrentPhotoPath = image.getAbsolutePath();
 
         //posting image to server
-        UploadRESTAdapter client = UploadRESTAdapter.getInstance();
-        client.uploadImage(mCurrentPhotoPath);
+        //UploadRESTAdapter client = UploadRESTAdapter.getInstance();
+        //client.uploadImage(mCurrentPhotoPath);
 
         TinyDB tinyDB = new TinyDB(this);
         ArrayList<String> photoPaths = tinyDB.getList(getString(R.string.photoPaths));
@@ -229,9 +227,9 @@ public class MainActivity extends AppCompatActivity {
         tinyDB.putList(getString(R.string.photoDates), photoDates);
 
         /**
-         ArrayList<String> photoTags = tinyDB.getList(getString(R.string.photoTags));
-         photoTags.add("Pink eye");
-         tinyDB.putList(getString(R.string.photoTags), photoTags);*/
+        ArrayList<String> photoTags = tinyDB.getList(getString(R.string.photoTags));
+        photoTags.add("Pink eye");
+        tinyDB.putList(getString(R.string.photoTags), photoTags);*/
         return image;
     }
 
