@@ -2,7 +2,6 @@ package com.lumivote.lollipop.ui;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -19,6 +18,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.clarifai.api.ClarifaiClient;
+import com.clarifai.api.RecognitionRequest;
+import com.clarifai.api.RecognitionResult;
+import com.clarifai.api.Tag;
 import com.lumivote.lollipop.R;
 import com.lumivote.lollipop.TinyDB;
 
@@ -27,7 +30,7 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashSet;
+import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -36,7 +39,10 @@ public class MainActivity extends AppCompatActivity {
 
     static final int REQUEST_IMAGE_CAPTURE = 1;
     static final int REQUEST_TAKE_PHOTO = 1;
+    static final String APP_ID = "Jnd1zR_3ZtsW9xsr0EW87IKQyIIuxeTRHbcNBAt1";
+    static final String APP_SECRET = "3ga_7Lvnfv9hWl5s4BnaSwuT_dE2DsXi6QK01e2X";
     String mCurrentPhotoPath;
+    File mCurrentImage;
 
     @Bind(R.id.toolbar)
     Toolbar toolbar;
@@ -111,13 +117,11 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public Fragment getItem(int position) {
-            if(position == 0){
+            if (position == 0) {
                 return CameraFragment.newInstance(position + 1);
-            }
-            else if(position == 1){
+            } else if (position == 1) {
                 return ResultFragment.newInstance(position + 1);
-            }
-            else{
+            } else {
                 return HistoryFragment.newInstance(position + 1);
             }
         }
@@ -129,7 +133,23 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void takePicture(View view){
+    public void fetchTag(View view) {
+        ClarifaiClient clarifai = new ClarifaiClient(APP_ID, APP_SECRET);
+        List<RecognitionResult> results =
+                clarifai.recognize(new RecognitionRequest("http://www.clarifai.com/static/img_ours/metro-north.jpg"));
+        Tag mostRelevantTag = null;
+        for (Tag tag : results.get(0).getTags()) {
+            if (mostRelevantTag == null || mostRelevantTag.getProbability() < tag.getProbability())
+                mostRelevantTag = tag;
+        }
+
+        TinyDB tinyDB = new TinyDB(this);
+        ArrayList<String> photoTags = tinyDB.getList(getString(R.string.photoTags));
+        photoTags.add(mostRelevantTag.getName());
+        tinyDB.putList(getString(R.string.photoTags), photoTags);
+    }
+
+    public void takePicture(View view) {
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         if (intent.resolveActivity(getPackageManager()) != null) {
             File photoFile = null;
@@ -161,7 +181,7 @@ public class MainActivity extends AppCompatActivity {
                 ".jpg",         /* suffix */
                 storageDir      /* directory */
         );
-
+        mCurrentImage = image;
         mCurrentPhotoPath = image.getAbsolutePath();
         TinyDB tinyDB = new TinyDB(this);
         ArrayList<String> photoPaths = tinyDB.getList(getString(R.string.photoPaths));

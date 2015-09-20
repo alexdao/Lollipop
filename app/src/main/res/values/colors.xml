@@ -11,6 +11,7 @@
     <color name="colorPrimaryDark">#219173</color>
     <color name="colorAccent">#F59331</color>
 
+    <color name="colorBackground">#F2CE35</color>
     <color name="whiteText">#FFFFFF</color>
     <color name="blackText">#000</color>
 

@@ -4,12 +4,14 @@
     <string name="hello_world">Hello world!</string>
     <!-- Camera -->
     <string name="camera_tab_title">Camera</string>
-    <string name="camera_take_picture">Take Picture!</string>
+    <string name="camera_take_picture">Take a picture!</string>
     <string name="photoPaths">photo_paths</string>
     <string name="photoDates">photo_dates</string>
+    <string name="photoTags">photo_tags</string>
 
     <!-- Result -->
     <string name="result_tab_title">Result</string>
+
 
     <!-- History -->
     <string name="history_tab_title">History</string>
