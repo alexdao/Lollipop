@@ -96,7 +96,7 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
             return true;
         }
-        if(id == R.id.action_clear){
+        if (id == R.id.action_clear) {
             TinyDB tinyDB = new TinyDB(this);
             tinyDB.putList(getString(R.string.photoPaths), new ArrayList<String>());
             tinyDB.putList(getString(R.string.photoDates), new ArrayList<String>());
@@ -119,7 +119,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Subscribe
-    public void handleImageUploadEvent (ImageUploadEvent event) {
+    public void handleImageUploadEvent(ImageUploadEvent event) {
         TinyDB tinyDB = new TinyDB(this);
         String tag = event.getTag();
         ArrayList<String> photoTags = tinyDB.getList(getString(R.string.photoTags));
@@ -229,9 +229,9 @@ public class MainActivity extends AppCompatActivity {
         tinyDB.putList(getString(R.string.photoDates), photoDates);
 
         /**
-        ArrayList<String> photoTags = tinyDB.getList(getString(R.string.photoTags));
-        photoTags.add("Pink eye");
-        tinyDB.putList(getString(R.string.photoTags), photoTags);*/
+         ArrayList<String> photoTags = tinyDB.getList(getString(R.string.photoTags));
+         photoTags.add("Pink eye");
+         tinyDB.putList(getString(R.string.photoTags), photoTags);*/
         return image;
     }
 

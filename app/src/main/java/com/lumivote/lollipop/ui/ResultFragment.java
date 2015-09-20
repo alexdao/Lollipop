@@ -54,7 +54,7 @@ public class ResultFragment extends Fragment {
         ArrayList<String> photoPaths = tinyDB.getList(getActivity().getString(R.string.photoPaths));
         ArrayList<String> photoDates = tinyDB.getList(getActivity().getString(R.string.photoDates));
         ArrayList<String> photoTags = tinyDB.getList(getActivity().getString(R.string.photoTags));
-        if(photoPaths.size() > 0){
+        if (photoPaths.size() > 0) {
             String path = photoPaths.get(photoPaths.size() - 1);
             String date = photoDates.get(photoDates.size() - 1);
             String tag = photoTags.get(photoTags.size() - 1);
@@ -62,8 +62,7 @@ public class ResultFragment extends Fragment {
             Picasso.with(getActivity()).load("file://" + path).into(illnessPhoto);
             illnessTitle.setText("Illness detected: " + tag);
             illnessDate.setText("Time taken: " + date);
-        }
-        else{
+        } else {
             illnessTitle.setText("No pictures taken yet!");
         }
         return view;
