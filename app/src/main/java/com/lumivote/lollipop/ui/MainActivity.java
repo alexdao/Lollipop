@@ -152,6 +152,7 @@ public class MainActivity extends AppCompatActivity {
     private File createImageFile() throws IOException {
         // Create an image file name
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+        String formattedTime = new SimpleDateFormat("MM-dd-yyyy HH:mm").format(new Date());
         String imageFileName = "JPEG_" + timeStamp + "_";
         File storageDir = Environment.getExternalStoragePublicDirectory(
                 Environment.DIRECTORY_PICTURES);
@@ -166,6 +167,10 @@ public class MainActivity extends AppCompatActivity {
         ArrayList<String> photoPaths = tinyDB.getList(getString(R.string.photoPaths));
         photoPaths.add(mCurrentPhotoPath);
         tinyDB.putList(getString(R.string.photoPaths), photoPaths);
+
+        ArrayList<String> photoDates = tinyDB.getList(getString(R.string.photoDates));
+        photoDates.add(formattedTime);
+        tinyDB.putList(getString(R.string.photoDates), photoDates);
         return image;
     }
 

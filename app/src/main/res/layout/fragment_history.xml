@@ -19,16 +19,26 @@
         android:padding="@dimen/rv_padding">
 
         <ImageView
-            android:id="@+id/person_photo"
+            android:id="@+id/illnessPhoto"
             android:layout_width="fill_parent"
             android:layout_height="@dimen/history_image_height"
             android:padding="@dimen/history_image_padding" />
 
         <TextView
-            android:id="@+id/person_desc"
-            android:layout_width="wrap_content"
+            android:id="@+id/illnessDate"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/person_photo"
+            android:layout_below="@+id/illnessPhoto"
+            android:gravity="center"
+            android:textColor="@color/blackText"
+            android:textSize="@dimen/history_date_size" />
+
+        <TextView
+            android:id="@+id/illnessName"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/illnessDate"
+            android:gravity="center"
             android:textColor="@color/blackText"
             android:textSize="@dimen/history_date_size" />
 

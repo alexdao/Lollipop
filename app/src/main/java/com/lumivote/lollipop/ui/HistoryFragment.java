@@ -18,7 +18,6 @@ import com.lumivote.lollipop.TinyDB;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 
 import butterknife.Bind;
@@ -82,8 +81,9 @@ public class HistoryFragment extends Fragment {
         illnesses = new ArrayList<>();
         TinyDB tinyDB = new TinyDB(getActivity());
         ArrayList<String> photoPaths = tinyDB.getList(getActivity().getString(R.string.photoPaths));
-        for(String path: photoPaths){
-            illnesses.add(new Illness("date", "name", path));
+        ArrayList<String> photoDates = tinyDB.getList(getActivity().getString(R.string.photoDates));
+        for(int i=0; i<photoPaths.size(); i++){
+            illnesses.add(new Illness(photoDates.get(i), "name", photoPaths.get(i)));
         }
     }
 
@@ -109,7 +109,7 @@ public class HistoryFragment extends Fragment {
             final IllnessEventViewHolder pvh = new IllnessEventViewHolder(v);
             pvh.setListener(new IllnessEventViewHolder.IIllnessViewHolderClicks() {
                 public void onClickItem(View caller) {
-                    Log.d("Clicked the candidate", "Success");
+                    Log.d("Clicked the illness", "Success");
                 }
             });
             return pvh;
@@ -121,7 +121,8 @@ public class HistoryFragment extends Fragment {
             String photoPath = illnesses.get(i).getPhotoPath();
             String name = illnesses.get(i).getName();
 
-            illnessEventViewHolder.illnessDate.setText(date + name);
+            illnessEventViewHolder.illnessDate.setText("Time taken: " + date);
+            illnessEventViewHolder.illnessName.setText("Illness detected: " + name);
             illnessEventViewHolder.position = illnessEventViewHolder.getAdapterPosition();
 
             Context context = illnessEventViewHolder.illnessPhoto.getContext();
@@ -140,13 +141,15 @@ public class HistoryFragment extends Fragment {
             RelativeLayout relativeLayout;
             ImageView illnessPhoto;
             TextView illnessDate;
+            TextView illnessName;
             public IIllnessViewHolderClicks mListener;
 
             IllnessEventViewHolder(View itemView) {
                 super(itemView);
                 relativeLayout = (RelativeLayout) itemView.findViewById(R.id.relative_layout);
-                illnessPhoto = ButterKnife.findById(itemView, R.id.person_photo);
-                illnessDate = ButterKnife.findById(itemView, R.id.person_desc);
+                illnessPhoto = ButterKnife.findById(itemView, R.id.illnessPhoto);
+                illnessDate = ButterKnife.findById(itemView, R.id.illnessDate);
+                illnessName = ButterKnife.findById(itemView, R.id.illnessName);
             }
 
             private void setListener(IIllnessViewHolderClicks listener) {
