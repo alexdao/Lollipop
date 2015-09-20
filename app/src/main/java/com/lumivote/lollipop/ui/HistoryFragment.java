@@ -14,8 +14,11 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.lumivote.lollipop.R;
+import com.lumivote.lollipop.TinyDB;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 import butterknife.Bind;
@@ -77,8 +80,10 @@ public class HistoryFragment extends Fragment {
 
     private void initializeData() {
         illnesses = new ArrayList<>();
-        for(int i=0; i<10; i++){
-            illnesses.add(new Illness("date", "name"));
+        TinyDB tinyDB = new TinyDB(getActivity());
+        ArrayList<String> photoPaths = tinyDB.getList(getActivity().getString(R.string.photoPaths));
+        for(String path: photoPaths){
+            illnesses.add(new Illness("date", "name", path));
         }
     }
 
@@ -113,11 +118,15 @@ public class HistoryFragment extends Fragment {
         @Override
         public void onBindViewHolder(IllnessEventViewHolder illnessEventViewHolder, int i) {
             String date = illnesses.get(i).getDate();
+            String photoPath = illnesses.get(i).getPhotoPath();
+            String name = illnesses.get(i).getName();
 
-            illnessEventViewHolder.illnessDate.setText(date);
+            illnessEventViewHolder.illnessDate.setText(date + name);
             illnessEventViewHolder.position = illnessEventViewHolder.getAdapterPosition();
 
             Context context = illnessEventViewHolder.illnessPhoto.getContext();
+            Log.v(photoPath, "first image");
+            Picasso.with(context).load("file://" + photoPath).into(illnessEventViewHolder.illnessPhoto);
         }
 
         @Override

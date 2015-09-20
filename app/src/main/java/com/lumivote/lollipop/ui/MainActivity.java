@@ -25,6 +25,7 @@ import com.lumivote.lollipop.TinyDB;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
 
@@ -162,9 +163,9 @@ public class MainActivity extends AppCompatActivity {
 
         mCurrentPhotoPath = image.getAbsolutePath();
         TinyDB tinyDB = new TinyDB(this);
-        HashSet<String> photoPaths = tinyDB.getSet(getString(R.string.photoPaths));
+        ArrayList<String> photoPaths = tinyDB.getList(getString(R.string.photoPaths));
         photoPaths.add(mCurrentPhotoPath);
-        tinyDB.putSet(getString(R.string.photoPaths), photoPaths);
+        tinyDB.putList(getString(R.string.photoPaths), photoPaths);
         return image;
     }
 
